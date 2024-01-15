@@ -3,17 +3,19 @@ from django.core.exceptions import ValidationError
 from rest_framework import serializers
 from .models import User
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'phone_number', 'password')
+        fields = ('id', 'email', 'phone_number', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
-    
-    def validate_email(self, value):
+
+    @staticmethod
+    def validate_email(value):
         """
         Валидация email.
         """
@@ -21,7 +23,8 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Email уже используется.")
         return value
 
-    def validate_password(self, value):
+    @staticmethod
+    def validate_password(value):
         """
         Валидация пароля.
         """
