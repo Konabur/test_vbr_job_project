@@ -2,9 +2,9 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import generics, status
-from rest_framework.permissions import AllowAny
-from .models import User
-from .serializers import UserSerializer
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from .models import User, Organization, Event
+from .serializers import UserSerializer, OrganizationSerializer, EventSerializer
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -24,3 +24,27 @@ class CreateUserView(generics.CreateAPIView):
             return response
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class OrganizationListCreateView(generics.ListCreateAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class OrganizationRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class EventListCreateView(generics.ListCreateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class EventRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+    permission_classes = [IsAuthenticated]
