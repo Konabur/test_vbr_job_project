@@ -45,3 +45,8 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ['id', 'title', 'description', 'organizations', 'image', 'date']
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['preview_image'] = instance.image.url if instance.image else None
+        return rep
