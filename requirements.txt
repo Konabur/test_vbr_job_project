@@ -2,4 +2,7 @@ Django>=3.2
 djangorestframework>=3.12
 djangorestframework-simplejwt>=4.8
 Pillow>=8.2
+<<<<<<< HEAD
 drf-yasg>=1.20
+=======
+>>>>>>> 1cd1998729f21a30cfae744be7a60ee07fb1bac0

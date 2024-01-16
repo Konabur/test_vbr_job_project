@@ -2,6 +2,7 @@
 
 Проект представляет собой API для управления организациями и мероприятиями.
 
+<<<<<<< HEAD
 ## Документация
 
 Документация API доступна в формате Swagger и ReDoc:
@@ -10,6 +11,8 @@
 - [ReDoc (простой)](http://localhost:8000/core/redoc/)
 
 
+=======
+>>>>>>> 1cd1998729f21a30cfae744be7a60ee07fb1bac0
 ## Установка
 
 1. Клонировать репозиторий:
@@ -56,4 +59,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"username":"example_user",
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"username":"example_user","password":"secure_password"}' http://localhost:8000/token/refresh/
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1cd1998729f21a30cfae744be7a60ee07fb1bac0
