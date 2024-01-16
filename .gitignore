@@ -36,7 +36,7 @@ media
 .idea/**/gradle.xml
 .idea/**/libraries
 
-.idea/*
+.idea
 
 # File-based project format
 *.iws
@@ -74,6 +74,8 @@ wheels/
 # Installer logs 
 pip-log.txt 
 pip-delete-this-directory.txt 
+
+.vscode/
 
 # Unit test / coverage reports 
 htmlcov/ 
