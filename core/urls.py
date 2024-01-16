@@ -6,6 +6,7 @@ from drf_yasg import openapi
 
 from .views import (
     CreateUserView,
+    ObtainTokenAPIView,
     OrganizationListCreateView,
     OrganizationRetrieveUpdateView,
     EventListCreateView,
@@ -28,13 +29,17 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('api/create_user/', CreateUserView.as_view(), name='create_user'),
+    
+    path('token/', ObtainTokenAPIView.as_view(), name='obtain_token'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
     path('api/organizations/', OrganizationListCreateView.as_view(), name='organization-list-create'),
     path('api/organizations/<int:pk>/', OrganizationRetrieveUpdateView.as_view(), name='organization-retrieve-update'),
+    
     path('api/events/', EventListCreateView.as_view(), name='event-list-create'),
     path('api/events/<int:pk>/', EventRetrieveUpdateView.as_view(), name='event-retrieve-update'),
+    
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

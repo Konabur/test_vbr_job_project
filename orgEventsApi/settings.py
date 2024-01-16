@@ -138,3 +138,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'description': 'access token',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
+
+# ACCESS_TOKEN_LIFETIME = 30*24*60*60
